@@ -20,8 +20,10 @@ class Program
         //a = 35; // assigning value
 
         string a = "35";
+        string b = "30";
 
-        WriteLine(a);
+        WriteLine('a'+'b');
+ 
 
     }
 }
