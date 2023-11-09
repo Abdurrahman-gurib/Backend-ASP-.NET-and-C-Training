@@ -27,8 +27,23 @@ class Program
         WriteLine(a.Clone());
         WriteLine(a.Trim()); //remove whitespace in the phase as seen the the phrase above.
         WriteLine(a.Length);
-        String path = @"C:\\Users\\SD233484\\OneDrive - SD Worx\\Desktop\\BACKEND TRAINING\\HelloWorld"; // \t and \n are escape sequence characters
+        //String path = @"C:\\Users\\SD233484\\OneDrive - SD Worx\\Desktop\\BACKEND TRAINING\\HelloWorld"; // \t and \n are escape sequence characters
 
+        // string s1 = "Neosoft - ";
+        // string s2 = "sdworx";
+        //s1 += s1; // s1 = s1 = s2
+        //WriteLine(s1);
+
+        string s1 = "Neosoft - ";
+        string s2 = s1;
+        s1 += "sdworx";
+        WriteLine(s1);
+
+
+        string firstName = "Noor", lastName = "Gurib", Country = "Mauritius";
+        WriteLine($ "The instructor name is {firstName} {lastName} and he is from {Country}");
+
+    
         //int a;//declaration
         //a = 35; // assigning value
 
