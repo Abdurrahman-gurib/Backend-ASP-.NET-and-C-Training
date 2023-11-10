@@ -1,72 +1,42 @@
-﻿//predefined namespace : pre-written by C# experts 
-global using static System.Console;
-using System;
-//user defined namespace
-namespace HelloWorld; // file scope namespace
-                      // Types - class is a type just like structs, enums
+﻿using System;
+
 class Program
 {
-    // Type member
-    static void Main()// starting point of execution
+    static void Main()
     {
-        //program statment
-        /*
-         C# is case sensitive
-         statements ends with semi-colon
-         C# is type safe as well
-         */
-        WriteLine("Welcome to SDWorx training!");
-        //DateTime dt;
-        //long x = 10; // int is 4 bytes numeric type
-        // int y = (int)x; // long is 8 byte numeric type, implicit type conversion 
-        
-        //STRINGS
-        string a = "         A fox jump into the lake               ";
-        WriteLine(a.Contains("fox"));
-        WriteLine(a.ToUpper());
-        WriteLine(a.Clone());
-        WriteLine(a.Trim()); //remove whitespace in the phase as seen the the phrase above.
-        WriteLine(a.Length);
-        //String path = @"C:\\Users\\SD233484\\OneDrive - SD Worx\\Desktop\\BACKEND TRAINING\\HelloWorld"; // \t and \n are escape sequence characters
+        // Prompt the user to enter a string
+        Console.Write("Enter a string: ");
 
-        // string s1 = "Neosoft - ";
-        // string s2 = "sdworx";
-        //s1 += s1; // s1 = s1 = s2
-        //WriteLine(s1);
+        // Read the user's input and store it in the 'input' variable
+        string input = Console.ReadLine();
 
-        string s1 = "Neosoft - ";
-        string s2 = s1;
-        s1 += "sdworx";
-        WriteLine(s1);
+        // Call the ReverseString method to reverse the input string
+        string reversed = ReverseString(input);
 
+        // Display the reversed string to the console
+        Console.WriteLine("Reversed string: " + reversed);
+    }
 
-        string firstName = "Noor", lastName = "Gurib", Country = "Mauritius";
-        WriteLine($ "The instructor name is {firstName} {lastName} and he is from {Country}");
+    // Method to reverse a string
+    static string ReverseString(string input)
+    {
+        // Convert the input string to a character array
+        char[] inputArray = input.ToCharArray();
 
-    
-        //int a;//declaration
-        //a = 35; // assigning value
+        // Get the length of the character array
+        int length = inputArray.Length;
 
-        // string a = "35";
-        //int m = Int32.Parse(a);
-        // int m = Convert.ToInt32(a);
-        //WriteLine(m.GetType());
+        // Create a new character array to store the reversed characters
+        char[] reversedArray = new char[length];
 
-        //strings
+        // Iterate through the inputArray in reverse order
+        for (int i = 0; i < length; i++)
+        {
+            // Populate the reversedArray with characters in reversed order
+            reversedArray[i] = inputArray[length - 1 - i];
+        }
 
-
-
-
-
-
+        // Create a new string from the reversedArray and return it
+        return new string(reversedArray);
     }
 }
-// this will not be allowed if you use file scoped namespace before
-/*namespace RestaurantReviews
-{
-    namespace Reviews
-    {
-
-    }
-
-}*/
