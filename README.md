@@ -54,7 +54,7 @@ C# is a modern, versatile programming language developed by Microsoft.
 
 ## Contributing
 
-If you'd like to contribute to this repository, feel free to open an issue or submit a pull request.
+If you'd like to contribute to this repository, feel free to open an issue or submit a pull request or email me on noorgurib@gmail.com.
 
 ## License
 
