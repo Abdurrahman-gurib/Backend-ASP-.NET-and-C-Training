@@ -1,42 +1,44 @@
-﻿using System;
+﻿global using static System.Console;
+using System;
+using System.Text;
 
-class Program
+namespace HelloWorld
 {
-    static void Main()
+    class Program
     {
-        // Prompt the user to enter a string
-        Console.Write("Enter a string: ");
-
-        // Read the user's input and store it in the 'input' variable
-        string input = Console.ReadLine();
-
-        // Call the ReverseString method to reverse the input string
-        string reversed = ReverseString(input);
-
-        // Display the reversed string to the console
-        Console.WriteLine("Reversed string: " + reversed);
+        static void Main()
+        {
+            Greeting obj = new Greeting();
+            string output = obj.PrintHello("Felice Baxtor", 33, 80.50M);
+            WriteLine(output);
+        }
     }
 
-    // Method to reverse a string
-    static string ReverseString(string input)
+    class Greeting
     {
-        // Convert the input string to a character array
-        char[] inputArray = input.ToCharArray();
-
-        // Get the length of the character array
-        int length = inputArray.Length;
-
-        // Create a new character array to store the reversed characters
-        char[] reversedArray = new char[length];
-
-        // Iterate through the inputArray in reverse order
-        for (int i = 0; i < length; i++)
+        public string PrintHello(string name, int age, decimal salary)
         {
-            // Populate the reversedArray with characters in reversed order
-            reversedArray[i] = inputArray[length - 1 - i];
+            return $"Hello {name}, Age: {age}, Salary: {salary:C}";
         }
 
-        // Create a new string from the reversedArray and return it
-        return new string(reversedArray);
+        public string PrintHello(string firstName, string lastName, int age = 25, decimal wageRate = 60.76M)
+        {
+            return $"Hello, {firstName} {lastName} is {age} years old and earns ${wageRate} per hour";
+        }
+
+        public string PrintHello(string firstName, string lastName)
+        {
+            return $"Hello, {firstName} {lastName}";
+        }
+
+        public string PrintHello(int age, string firstName, string lastName)
+        {
+            return $"Hello, {firstName} {lastName} is {age} years old";
+        }
+
+        public string PrintHello(decimal wageRate, string lastName, string firstName)
+        {
+            return $"Hello, {firstName} {lastName} earns ${wageRate} per hour";
+        }
     }
 }

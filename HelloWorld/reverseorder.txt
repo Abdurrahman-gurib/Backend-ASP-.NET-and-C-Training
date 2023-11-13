@@ -1,0 +1,28 @@
+using System;
+
+namespace HelloWorld // Add a namespace for your program
+{
+    class Program
+    {
+        static void Main()
+        {
+            // Test case
+            ReverseWords("Welcome to Csharp corner");
+        }
+
+        static void ReverseWords(string input)
+        {
+            // Split the input string into an array of words
+            string[] words = input.Split(' ');
+
+            // Reverse the array of words
+            Array.Reverse(words);
+
+            // Join the reversed words to form the final reversed string
+            string reversed = string.Join(' ', words);
+
+            // Output the result
+            Console.WriteLine($"Input: {input}, Output: {reversed}");
+        }
+    }
+}

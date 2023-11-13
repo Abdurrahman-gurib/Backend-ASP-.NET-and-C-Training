@@ -1,0 +1,41 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Test cases
+        CheckPalindrome("madam");            // Palindrome
+        CheckPalindrome("step on no pets");  // Palindrome
+        CheckPalindrome("book");             // Not Palindrome
+    }
+
+    static void CheckPalindrome(string input)
+    {
+        // Remove spaces and convert to lowercase for accurate palindrome check
+        string cleanInput = RemoveSpacesAndLowerCase(input);
+
+        // Reverse the string
+        string reversed = ReverseString(cleanInput);
+
+        // Check if the original and reversed strings are the same
+        bool isPalindrome = cleanInput == reversed;
+
+        // Output the result
+        Console.WriteLine($"Input: {input}, Output: {(isPalindrome ? "Palindrome" : "Not Palindrome")}");
+    }
+
+    static string RemoveSpacesAndLowerCase(string input)
+    {
+        // Remove spaces and convert to lowercase
+        return input.Replace(" ", "").ToLower();
+    }
+
+    static string ReverseString(string input)
+    {
+        // Convert the string to char array, reverse, and create a new string
+        char[] charArray = input.ToCharArray();
+        Array.Reverse(charArray);
+        return new string(charArray);
+    }
+}

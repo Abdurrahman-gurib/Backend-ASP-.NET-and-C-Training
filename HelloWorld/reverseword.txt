@@ -1,0 +1,33 @@
+using System;
+
+namespace HelloWorld
+{
+    class Program
+    {
+        static void Main()
+        {
+            // Test case
+            ReverseEachWord("Welcome to Csharp corner");
+        }
+
+        static void ReverseEachWord(string input)
+        {
+            // Split the input string into an array of words
+            string[] words = input.Split(' ');
+
+            // Reverse each word in the array
+            for (int i = 0; i < words.Length; i++)
+            {
+                char[] charArray = words[i].ToCharArray();
+                Array.Reverse(charArray);
+                words[i] = new string(charArray);
+            }
+
+            // Join the reversed words to form the final reversed string
+            string reversed = string.Join(' ', words);
+
+            // Output the result
+            Console.WriteLine($"Input: {input}, Output: {reversed}");
+        }
+    }
+}
