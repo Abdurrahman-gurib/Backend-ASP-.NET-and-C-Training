@@ -1,44 +1,41 @@
-﻿global using static System.Console;
-using System;
-using System.Text;
+﻿using System;
+using System.Linq;
 
-namespace HelloWorld
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main()
+        // Sample array with elements
+        int[] array = { 10, 5, 20, 10, 30, 20, 40, 30, 50, 50 };
+
+        // Call the method to find the largest three distinct elements
+        var largestThreeDistinctElements = FindLargestThreeDistinctElements(array);
+
+        // Print the result
+        Console.WriteLine("Largest three distinct elements:");
+        foreach (var element in largestThreeDistinctElements)
         {
-            Greeting obj = new Greeting();
-            string output = obj.PrintHello("Felice Baxtor", 33, 80.50M);
-            WriteLine(output);
+            Console.WriteLine(element);
         }
     }
 
-    class Greeting
+    // Method to find the largest three distinct elements
+    static int[] FindLargestThreeDistinctElements(int[] array)
     {
-        public string PrintHello(string name, int age, decimal salary)
-        {
-            return $"Hello {name}, Age: {age}, Salary: {salary:C}";
-        }
+        // Remove duplicates and order the array in descending order. largest number display first in the list
+        var distinctOrderedArray = array.Distinct().OrderByDescending(x => x).ToArray();
 
-        public string PrintHello(string firstName, string lastName, int age = 25, decimal wageRate = 60.76M)
+        // Ensure there are at least three distinct elements
+        if (distinctOrderedArray.Length >= 3)
         {
-            return $"Hello, {firstName} {lastName} is {age} years old and earns ${wageRate} per hour";
+            // Take the first three elements
+            return distinctOrderedArray.Take(3).ToArray();
         }
-
-        public string PrintHello(string firstName, string lastName)
+        else
         {
-            return $"Hello, {firstName} {lastName}";
-        }
-
-        public string PrintHello(int age, string firstName, string lastName)
-        {
-            return $"Hello, {firstName} {lastName} is {age} years old";
-        }
-
-        public string PrintHello(decimal wageRate, string lastName, string firstName)
-        {
-            return $"Hello, {firstName} {lastName} earns ${wageRate} per hour";
+            // Handle the case when there are less than three distinct elements
+            Console.WriteLine("Array does not have at least three distinct elements.");
+            return distinctOrderedArray.ToArray();
         }
     }
 }
