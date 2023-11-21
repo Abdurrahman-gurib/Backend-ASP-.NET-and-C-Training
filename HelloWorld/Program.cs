@@ -212,4 +212,4 @@ namespace StudentUI
         static void QueryAgeRange(int minAge, int maxAge)
         {
             var studentsInAgeRange = StudentData.Students.Where(s => CalculateAge(s.DateOfBirth) >= minAge && CalculateAge(s.DateOfBirth) <= maxAge).ToList();
-            DisplayStudents($"Students between ages {minAge} and {maxAge
+            DisplayStudents($"Students between ages {minAge} and {maxAge});
