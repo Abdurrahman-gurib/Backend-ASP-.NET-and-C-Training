@@ -83,7 +83,7 @@ namespace HelloWorld
 }*/
 
 
-using System;
+/*using System;
 using System.Collections.Generic;
 
 namespace StudentLib
@@ -212,4 +212,109 @@ namespace StudentUI
         static void QueryAgeRange(int minAge, int maxAge)
         {
             var studentsInAgeRange = StudentData.Students.Where(s => CalculateAge(s.DateOfBirth) >= minAge && CalculateAge(s.DateOfBirth) <= maxAge).ToList();
-            DisplayStudents($"Students between ages {minAge} and {maxAge});
+            DisplayStudents($"Students between ages {minAge} and {maxAge});*/
+
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+// Define a custom collection for a sorted list
+public class SortedListCollection<T> : IEnumerable<T> where T : IComparable<T>
+{
+    private List<T> sortedList;
+
+    // Constructor to initialize the collection
+    public SortedListCollection()
+    {
+        sortedList = new List<T>();
+    }
+
+    // Method to add an element to the sorted list
+    public void Add(T item)
+    {
+        // Find the index to insert the item while maintaining the sorted order
+        int index = sortedList.BinarySearch(item);
+        if (index < 0)
+            index = ~index; // Bitwise complement to get the proper index for insertion
+
+        // Insert the item at the correct position
+        sortedList.Insert(index, item);
+    }
+
+    // Method to remove an element from the sorted list
+    public void Remove(T item)
+    {
+        // Use BinarySearch to find the index of the item
+        int index = sortedList.BinarySearch(item);
+
+        // If the item is found, remove it
+        if (index >= 0)
+            sortedList.RemoveAt(index);
+    }
+
+    // Method to clear all elements from the sorted list
+    public void Clear()
+    {
+        sortedList.Clear();
+    }
+
+    // Method to iterate through elements in the sorted list
+    public IEnumerator<T> GetEnumerator()
+    {
+        return sortedList.GetEnumerator();
+    }
+
+    // Explicit interface implementation for non-generic IEnumerable
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    // Method to filter elements using LINQ during iteration
+    public IEnumerable<T> Filter(Func<T, bool> predicate)
+    {
+        return sortedList.Where(predicate);
+    }
+}
+
+// usage
+class Program
+{
+    static void Main()
+    {
+        // Create an instance of the custom collection
+        var sortedListCollection = new SortedListCollection<int>();
+
+        // Add elements to the collection
+        sortedListCollection.Add(5);
+        sortedListCollection.Add(3);
+        sortedListCollection.Add(8);
+        sortedListCollection.Add(1);
+
+        // Display elements in the sorted order
+        Console.WriteLine("Sorted List:");
+        foreach (var item in sortedListCollection)
+        {
+            Console.WriteLine(item);
+        }
+
+        // Remove an element
+        sortedListCollection.Remove(3);
+
+        // Display elements after removal
+        Console.WriteLine("\nAfter Removal:");
+        foreach (var item in sortedListCollection)
+        {
+            Console.WriteLine(item);
+        }
+
+        // Filter elements using LINQ during iteration
+        Console.WriteLine("\nFiltered Elements (Greater than 4):");
+        foreach (var item in sortedListCollection.Filter(x => x > 4))
+        {
+            Console.WriteLine(item);
+        }
+    }
+}
